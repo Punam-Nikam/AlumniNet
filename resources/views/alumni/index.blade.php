@@ -12,6 +12,7 @@
         .navbar { background: #1a1a2e; padding: 16px 32px; color: white; font-size: 22px; font-weight: bold; }
 
         /* Search bar */
+        
         .search-section { padding: 32px; text-align: center; }
         .search-section h2 { font-size: 28px; margin-bottom: 16px; color: #1a1a2e; }
         .search-box { padding: 12px 20px; width: 400px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
