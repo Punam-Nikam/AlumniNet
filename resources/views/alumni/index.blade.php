@@ -22,17 +22,48 @@
         .badge-branch { background: #eef0ff; color: #3c3c8e; font-weight: 500; border-radius: 20px; padding: 4px 12px; font-size: 12px; }
         .connect-btn { border-radius: 50px; font-size: 13px; font-weight: 600; padding: 7px 20px; }
         .section-title { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 24px; }
-    </style>
+   
+   
+        /* Mobile responsiveness */
+@media (max-width: 576px) {
+    .hero h1 { font-size: 24px; }
+    .hero p  { font-size: 14px; }
+    .search-box { font-size: 14px; }
+    .alumni-card { margin-bottom: 8px; }
+    .avatar { width: 60px; height: 60px; font-size: 22px; }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .hero { padding: 30px 0; }
+    .hero h1 { font-size: 28px; }
+}
+   </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-dark" style="background:#1a1a2e;">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background:#1a1a2e;">
     <div class="container">
         <a class="navbar-brand" href="#">🎓 AlumniNet</a>
-        <div class="d-flex gap-2">
-            <a href="#" class="btn btn-outline-light btn-sm">Login</a>
-            <a href="#" class="btn btn-light btn-sm fw-bold">Register</a>
+
+        <!-- Hamburger button (shows on mobile) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav links (collapses on mobile) -->
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#">Directory</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Jobs</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+            </ul>
+            <div class="d-flex gap-2 ms-3">
+                <a href="#" class="btn btn-outline-light btn-sm">Login</a>
+                <a href="#" class="btn btn-warning btn-sm fw-bold">Register</a>
+            </div>
         </div>
     </div>
 </nav>
@@ -57,15 +88,16 @@
 </div>
 
 <!-- Filter Badges -->
+<!-- Filter Badges — scrollable on mobile -->
 <div class="container mt-4 mb-2">
-    <div class="d-flex gap-2 flex-wrap">
-        <span class="badge rounded-pill bg-dark px-3 py-2" style="cursor:pointer">All</span>
-        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Computer Science</span>
-        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Electronics</span>
-        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Mechanical</span>
-        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Civil</span>
-        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Batch 2020</span>
-        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Batch 2021</span>
+    <div class="d-flex gap-2 flex-nowrap overflow-auto pb-2" style="-webkit-overflow-scrolling:touch;">
+        <span class="badge rounded-pill bg-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">All</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">Computer Science</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">Electronics</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">Mechanical</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">Civil</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">Batch 2020</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2 flex-shrink-0" style="cursor:pointer">Batch 2021</span>
     </div>
 </div>
 
