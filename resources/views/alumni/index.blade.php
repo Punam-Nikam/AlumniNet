@@ -4,58 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AlumniNet — Directory</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f4f6f9; color: #333; }
-
-        /* Navbar */
-        .navbar { background: #1a1a2e; padding: 16px 32px; color: white; font-size: 22px; font-weight: bold; }
-
-        /* Search bar */
-        
-        .search-section { padding: 32px; text-align: center; }
-        .search-section h2 { font-size: 28px; margin-bottom: 16px; color: #1a1a2e; }
-        .search-box { padding: 12px 20px; width: 400px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; }
-        .search-btn { padding: 12px 24px; background: #1a1a2e; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-left: 8px; }
-
-        /* Cards grid */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; padding: 0 32px 40px; }
-
-        /* Single card */
-        .card { background: white; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center; }
-        .avatar { width: 72px; height: 72px; border-radius: 50%; background: #1a1a2e; color: white; font-size: 28px; font-weight: bold; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-        .card h3 { font-size: 18px; margin-bottom: 6px; }
-        .card .role { color: #666; font-size: 14px; margin-bottom: 4px; }
-        .card .company { color: #1a1a2e; font-weight: bold; font-size: 14px; margin-bottom: 4px; }
-        .card .batch { font-size: 13px; color: #999; margin-bottom: 16px; }
-        .connect-btn { background: #1a1a2e; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; }
+        body { background-color: #f0f2f5; }
+        .navbar-brand { font-weight: 700; font-size: 22px; }
+        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 50px 0; }
+        .hero h1 { font-size: 36px; font-weight: 700; }
+        .hero p  { font-size: 16px; opacity: 0.8; }
+        .search-box { border-radius: 50px; padding: 12px 24px; border: none; font-size: 15px; }
+        .search-btn { border-radius: 50px; padding: 12px 28px; font-weight: 600; }
+        .alumni-card { border: none; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform .2s, box-shadow .2s; }
+        .alumni-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(0,0,0,0.15); }
+        .avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, #1a1a2e, #4a4e8e); color: white; font-size: 26px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+        .badge-branch { background: #eef0ff; color: #3c3c8e; font-weight: 500; border-radius: 20px; padding: 4px 12px; font-size: 12px; }
+        .connect-btn { border-radius: 50px; font-size: 13px; font-weight: 600; padding: 7px 20px; }
+        .section-title { font-size: 22px; font-weight: 700; color: #1a1a2e; margin-bottom: 24px; }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <div class="navbar">🎓 AlumniNet</div>
-
-    <!-- Search Section -->
-    <div class="search-section">
-        <h2>Alumni Directory</h2>
-        <input type="text" class="search-box" placeholder="Search by name, company, branch...">
-        <button class="search-btn">Search</button>
+<!-- Navbar -->
+<nav class="navbar navbar-dark" style="background:#1a1a2e;">
+    <div class="container">
+        <a class="navbar-brand" href="#">🎓 AlumniNet</a>
+        <div class="d-flex gap-2">
+            <a href="#" class="btn btn-outline-light btn-sm">Login</a>
+            <a href="#" class="btn btn-light btn-sm fw-bold">Register</a>
+        </div>
     </div>
+</nav>
 
-    <!-- Alumni Cards -->
-    <div class="cards-grid">
+<!-- Hero Section -->
+<div class="hero">
+    <div class="container text-center">
+        <h1>🎓 Alumni Directory</h1>
+        <p class="mb-4">Connect with your college alumni working across top companies worldwide</p>
+        <!-- Search Bar -->
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="input-group shadow">
+                    <input type="text" class="form-control search-box" placeholder="Search by name, company, branch...">
+                    <button class="btn btn-warning search-btn">
+                        <i class="bi bi-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Filter Badges -->
+<div class="container mt-4 mb-2">
+    <div class="d-flex gap-2 flex-wrap">
+        <span class="badge rounded-pill bg-dark px-3 py-2" style="cursor:pointer">All</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Computer Science</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Electronics</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Mechanical</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Civil</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Batch 2020</span>
+        <span class="badge rounded-pill bg-light text-dark px-3 py-2" style="cursor:pointer">Batch 2021</span>
+    </div>
+</div>
+
+<!-- Alumni Cards -->
+<div class="container py-4">
+    <div class="section-title">{{ count($alumni) }} Alumni Found</div>
+    <div class="row g-4">
         @foreach($alumni as $person)
-        <div class="card">
-            <div class="avatar">{{ strtoupper(substr($person['name'], 0, 1)) }}</div>
-            <h3>{{ $person['name'] }}</h3>
-            <div class="role">{{ $person['role'] }}</div>
-            <div class="company">{{ $person['company'] }}</div>
-            <div class="batch">{{ $person['branch'] }} • Batch {{ $person['batch'] }}</div>
-            <button class="connect-btn">Connect</button>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="card alumni-card h-100 text-center p-3">
+                <div class="card-body">
+                    <div class="avatar">{{ strtoupper(substr($person['name'], 0, 1)) }}</div>
+                    <h6 class="fw-bold mb-1">{{ $person['name'] }}</h6>
+                    <p class="text-muted small mb-1">{{ $person['role'] }}</p>
+                    <p class="fw-semibold text-dark mb-2">
+                        <i class="bi bi-building"></i> {{ $person['company'] }}
+                    </p>
+                    <span class="badge-branch">{{ $person['branch'] }}</span>
+                    <p class="text-muted small mt-2 mb-3">
+                        <i class="bi bi-mortarboard"></i> Batch {{ $person['batch'] }}
+                    </p>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button class="btn btn-dark connect-btn">
+                            <i class="bi bi-person-plus"></i> Connect
+                        </button>
+                        <button class="btn btn-outline-secondary connect-btn">
+                            <i class="bi bi-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         @endforeach
     </div>
+</div>
 
+<!-- Footer -->
+<footer class="text-center py-4 text-muted small" style="background:#1a1a2e;color:white!important;margin-top:40px">
+    <span style="color:#aaa">© 2026 AlumniNet — Connecting Alumni Worldwide</span>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
