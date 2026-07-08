@@ -43,7 +43,7 @@
 <body>
 
 <!-- Navbar -->
-<!-- Navbar -->
+
 <nav class="navbar navbar-expand-lg navbar-dark" style="background:#1a1a2e;">
     <div class="container">
         <a class="navbar-brand" href="#">🎓 AlumniNet</a>
