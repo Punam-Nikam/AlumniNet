@@ -4,43 +4,49 @@ namespace App\Http\Controllers;
 
 use App\Models\Alumni;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class AlumniController extends Controller
 {
-    // Admin dashboard
-    public function dashboard()
+    public function index(Request $request)
     {
-        $pending  = Alumni::where('status', 'pending')->get();
-        $approved = Alumni::where('status', 'approved')->count();
-        $rejected = Alumni::where('status', 'rejected')->count();
-        $total    = Alumni::count();
+        // Start query — only approved alumni
+        $query = Alumni::where('status', 'approved');
 
-        return view('admin.dashboard', compact(
-            'pending', 'approved', 'rejected', 'total'
+        // Filter by search keyword (name, company, role)
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('name',    'like', "%{$search}%")
+                  ->orWhere('company', 'like', "%{$search}%")
+                  ->orWhere('role',    'like', "%{$search}%");
+            });
+        }
+
+        // Filter by branch
+        if ($request->filled('branch')) {
+            $query->where('branch', $request->branch);
+        }
+
+        // Filter by batch year
+        if ($request->filled('batch')) {
+            $query->where('batch', $request->batch);
+        }
+
+        // Filter by company
+        if ($request->filled('company')) {
+            $query->where('company', 'like', "%{$request->company}%");
+        }
+
+        // Execute query and get results
+        $alumni = $query->get();
+
+        // Get unique values for filter dropdowns
+        $branches  = Alumni::where('status', 'approved')->distinct()->pluck('branch');
+        $batches   = Alumni::where('status', 'approved')->distinct()->orderBy('batch', 'desc')->pluck('batch');
+        $companies = Alumni::where('status', 'approved')->distinct()->pluck('company')->filter();
+
+        return view('alumni.index', compact(
+            'alumni', 'branches', 'batches', 'companies'
         ));
-    }
-
-    // Approve alumni
-    public function approve($id)
-    {
-        $alumni = Alumni::findOrFail($id);
-        $alumni->update(['status' => 'approved']);
-        return back()->with('success', $alumni->name . ' has been approved!');
-    }
-
-    // Reject alumni
-    public function reject($id)
-    {
-        $alumni = Alumni::findOrFail($id);
-        $alumni->update(['status' => 'rejected']);
-        return back()->with('success', $alumni->name . ' has been rejected.');
-    }
-
-    // All approved alumni
-    public function allAlumni()
-    {
-        $alumni = Alumni::where('status', 'approved')->get();
-        return view('admin.alumni', compact('alumni'));
     }
 }
