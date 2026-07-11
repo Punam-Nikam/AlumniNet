@@ -24,3 +24,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/approve/{id}',    [AdminController::class, 'approve']);
     Route::post('/reject/{id}',     [AdminController::class, 'reject']);
 });
+
+use App\Http\Controllers\JobPostController;
+
+// Job routes (protected — must be logged in)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/jobs',           [JobPostController::class, 'index']);
+    Route::get('/jobs/create',    [JobPostController::class, 'create']);
+    Route::post('/jobs',          [JobPostController::class, 'store']);
+    Route::get('/jobs/{id}',      [JobPostController::class, 'show']);
+    Route::delete('/jobs/{id}',   [JobPostController::class, 'destroy']);
+});
