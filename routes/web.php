@@ -35,3 +35,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/jobs/{id}',      [JobPostController::class, 'show']);
     Route::delete('/jobs/{id}',   [JobPostController::class, 'destroy']);
 });
+
+use App\Http\Controllers\ConnectionController;
+
+// Connection routes
+Route::get('/connections',          [ConnectionController::class, 'index']);
+Route::post('/connect/{id}',        [ConnectionController::class, 'connect']);
+Route::post('/connections/accept/{id}', [ConnectionController::class, 'accept']);
+Route::post('/connections/reject/{id}', [ConnectionController::class, 'reject']);

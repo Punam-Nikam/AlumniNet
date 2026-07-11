@@ -38,6 +38,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active" href="/alumni">Directory</a></li>
                 <li class="nav-item"><a class="nav-link" href="/jobs">Jobs</a></li>
+                <li class="nav-item"><a class="nav-link" href="/connections">Connections</a></li>
             </ul>
             <div class="d-flex gap-2 ms-3">
                 @auth
@@ -177,9 +178,16 @@
                                 <i class="bi bi-mortarboard"></i> Batch {{ $person->batch }}
                             </p>
                             <div class="d-flex gap-2 justify-content-center">
-                                <button class="btn btn-dark connect-btn">
-                                    <i class="bi bi-person-plus"></i> Connect
-                                </button>
+                                @auth
+                                    <form method="POST" action="/connect/{{ $person->id }}">
+                                        @csrf
+                                        <button class="btn btn-dark connect-btn">
+                                            <i class="bi bi-person-plus"></i> Connect
+                                        </button>
+                                    </form>
+                                @else
+                                    <a href="/login" class="btn btn-dark connect-btn">Login to Connect</a>
+                                @endauth
                                 <button class="btn btn-outline-secondary connect-btn">
                                     <i class="bi bi-envelope"></i>
                                 </button>
