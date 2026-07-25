@@ -15,7 +15,8 @@ return new class extends Migration
         $table->id();                          // auto-increment primary key
         $table->string('name');                // alumni full name
         $table->string('email')->unique();     // email (must be unique)
-        $table->string('password');            // hashed password
+        $table->string('password');   // hashed password
+        $table->string('institute');         
         $table->string('branch');              // e.g. Computer Science
         $table->string('batch');               // e.g. 2020
         $table->string('company')->nullable(); // current company

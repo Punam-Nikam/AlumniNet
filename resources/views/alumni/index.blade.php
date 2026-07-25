@@ -114,6 +114,19 @@
                         </select>
                     </div>
 
+                    <!-- Institute Filter -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Institute</label>
+                        <select name="institute" class="form-select form-select-sm" onchange="this.form.submit()">
+                            <option value="">All Institutes</option>
+                            @foreach($institutes as $institute)
+                                <option value="{{ $institute }}"
+                                    {{ request('institute') == $institute ? 'selected' : '' }}>
+                                    {{ $institute }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                     <!-- Batch Filter -->
                     <div class="mb-3">
                         <label class="form-label fw-semibold small">Batch Year</label>
@@ -174,6 +187,9 @@
                                 {{ $person->company ?? 'Not specified' }}
                             </p>
                             <span class="badge-branch">{{ $person->branch }}</span>
+                            <p class="text-muted small mb-1">
+                            <i class="bi bi-building"></i> {{ $person->institute }}
+                            </p>
                             <p class="text-muted small mt-2 mb-3">
                                 <i class="bi bi-mortarboard"></i> Batch {{ $person->batch }}
                             </p>

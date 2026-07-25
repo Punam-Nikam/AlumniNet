@@ -9,11 +9,12 @@ class Alumni extends Authenticatable
 {
     use HasFactory;
 
-    protected $table = 'alumni'; 
+    protected $table = 'alumni';
 
     protected $fillable = [
-        'name', 'email', 'password', 'branch', 'batch',
-        'company', 'role', 'phone', 'bio', 'profile_photo', 'status', 'is_admin'
+        'name', 'email', 'password', 'institute', 'branch',
+        'batch', 'company', 'role', 'phone', 'bio',
+        'profile_photo', 'is_admin'
     ];
 
     protected $hidden = ['password'];
