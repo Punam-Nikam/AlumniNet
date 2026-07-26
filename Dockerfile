@@ -1,9 +1,10 @@
 FROM php:8.2-apache
 
-# Install PHP extensions
+# Install system dependencies + PHP extensions
 RUN apt-get update && apt-get install -y \
     libpq-dev \
     libzip-dev \
+    libonig-dev \
     zip \
     unzip \
     git \
@@ -21,7 +22,7 @@ WORKDIR /var/www/html
 # Copy project files
 COPY . .
 
-# Install dependencies
+# Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions
@@ -29,7 +30,7 @@ RUN chown -R www-data:www-data /var/www/html/storage \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
 
-# Apache config for Laravel
+# Apache config pointing to Laravel public folder
 RUN echo '<VirtualHost *:80>\n\
     DocumentRoot /var/www/html/public\n\
     <Directory /var/www/html/public>\n\
