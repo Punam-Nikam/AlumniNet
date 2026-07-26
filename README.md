@@ -210,7 +210,7 @@ php artisan db:seed with data
 php artisan serve
 ```
 
-Visit **http://127.0.0.1:8000** 🎉
+Visit **http://127.0.0.1:8000** 🎉  Live here - https://alumninet-065l.onrender.com
 
 ---
 
